@@ -1,0 +1,20 @@
+{
+  "name": "node-js-boosh-api",
+  "version": "1.0.0",
+  "description": "Backend for Boosh application",
+  "main": "boosh.js",
+  "keywords": [
+    "WhatsARanjit",
+    "boosh",
+    "HostMySite"
+  ],
+  "dependencies": {
+    "puppeteer": "^2.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WhatsARanjit/boosh"
+  },
+  "author": "WhatsARanjit",
+  "license": "ISC"
+}
