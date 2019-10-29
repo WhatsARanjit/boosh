@@ -12,6 +12,7 @@ if ($string) {
 
   $data = json_decode($raw);
   $murl = $data->{'murl'};
+  $srcp = $data->{'source_page'};
   $desc = htmlspecialchars($string);
 }
 ?>
@@ -79,6 +80,7 @@ img.boosh {
 <div class="row-fluid">
   <div class="col-lg-12">
     <img class="boosh" alt="<?php echo $desc; ?>" src="<?php echo $murl; ?>">
+    <p><small>ref: <a target="_blank" href="<?php echo $srcp; ?>"><?php echo $srcp; ?></a></small></p>
   </div>
 </div>
 <div class="row-fluid">&nbsp;</div>
