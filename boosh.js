@@ -1,4 +1,5 @@
 const puppeteer = require("puppeteer");
+const PORT      = process.env.PORT || 8080
 var http        = require('http');
 var url         = require('url');
 
@@ -6,7 +7,7 @@ http.createServer(function (req, res) {
   (async () => {
     //Google
     try {
-      var browser = await puppeteer.launch({ headless: true });
+      var browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
       var page    = await browser.newPage();
       var query   = url.parse(req.url, true).query
       await page.goto(`https://www.google.com/search?&tbm=isch&q=${query.q}`);
@@ -68,4 +69,4 @@ http.createServer(function (req, res) {
     }
   })();
   */
-}).listen(8080);
+}).listen(PORT, () => console.log(`Listening on ${PORT}`));
