@@ -17,9 +17,10 @@ http.createServer(function (req, res) {
         var imgs = document.querySelectorAll(`div#rg_s > div[jscontroller='Q7Rsec'] > a`);
         var href = imgs[0].getAttribute("href");
         var url  = unescape(href.split('?')[1].split('=')[1]).split('&')[0];
+        var srcp = unescape(href.split('?')[1].split('=')[2]).split('&')[0];
 
         //return JSON.parse(raw);
-        return '{ "term": "' + q + '", "murl": "' + url + '" }';
+        return '{ "term": "' + q + '", "murl": "' + url + '", "source_page": "' + srcp + '" }';
       }, query.q);
 
       await browser.close();
