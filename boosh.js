@@ -13,14 +13,14 @@ http.createServer(function (req, res) {
       await page.goto(`https://www.google.com/search?&tbm=isch&q=${query.q}`);
       await page.waitForSelector("div#isr_mc");
 
-      var result = await page.evaluate(() => {
+      var result = await page.evaluate((q) => {
         var imgs = document.querySelectorAll(`div#rg_s > div[jscontroller='Q7Rsec'] > a`);
         var href = imgs[0].getAttribute("href");
         var url  = unescape(href.split('?')[1].split('=')[1]).split('&')[0];
 
         //return JSON.parse(raw);
-        return '{ "murl": "' + url + '" }';
-      });
+        return '{ "term": "' + q + '", "murl": "' + url + '" }';
+      }, query.q);
 
       await browser.close();
       console.log(result);
